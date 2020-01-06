@@ -1,4 +1,4 @@
-- @title = @order.number
+- @title = @order.id
 
 - content_for :breadcrumbs do
   %p.breadcrumbs__node-group
@@ -6,11 +6,11 @@
       = link_to t('workarea.storefront.layouts.home'), root_path, rel: 'home'
     %span.breadcrumbs__node{ itemprop: 'breadcrumb' }
       = link_to t('workarea.storefront.orders.order_status'), check_orders_path
-    %span.breadcrumbs__node{ itemprop: 'breadcrumb' }= @order.number
+    %span.breadcrumbs__node{ itemprop: 'breadcrumb' }= @order.id
 
 .view
 
-  %h1= @order.number
+  %h1= @order.id
 
   %table.table
     %tbody

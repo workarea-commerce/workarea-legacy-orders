@@ -1,0 +1,37 @@
+module Workarea
+  decorate Storefront::OrdersController, with: :legacy_orders do
+    def lookup
+      order = LegacyOrder.lookup(params[:order_id], params[:postal_code])
+
+      if order.present?
+        session[:legacy_lookup_order_id] = order.id
+        redirect_to order_path(order)
+      else
+        session[:legacy_lookup_order_id] = nil
+        super
+      end
+    end
+
+    def show
+      if legacy_lookup_order.present? &&
+        legacy_lookup_order.id.to_s.downcase == params[:id].to_s.downcase
+
+        @order = Storefront::LegacyOrderViewModel.wrap(
+          @legacy_lookup_order,
+          view_model_options
+        )
+
+        render 'workarea/storefront/legacy_orders/show'
+      else
+        super
+      end
+    end
+
+    private
+
+    def legacy_lookup_order
+      return nil unless session[:legacy_lookup_order_id].present?
+      @legacy_lookup_order ||= LegacyOrder.find(session[:legacy_lookup_order_id])
+    end
+  end
+end

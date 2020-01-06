@@ -1,0 +1,23 @@
+module Workarea
+  decorate Storefront::UserViewModel, with: :legacy_orders do
+    def recent_orders
+      super + legacy_orders
+    end
+
+    def legacy_orders
+      Storefront::LegacyOrderViewModel.wrap(legacy_order_models)
+    end
+
+    def legacy_order_models
+      return [] unless legacy_order_limit > 0
+
+      LegacyOrder
+        .for_email(model.email)
+        .limit(legacy_order_limit)
+    end
+
+    def legacy_order_limit
+      Workarea.config.recent_order_count - recent_order_models.size
+    end
+  end
+end

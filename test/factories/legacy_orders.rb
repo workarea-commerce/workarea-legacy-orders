@@ -7,7 +7,6 @@ module Workarea
         attributes = {
           email:            "epigeon@workarea.com",
           customer_number:  "1234",
-          number:           "W1234",
           alternate_number: "O5678",
           placed_at:        DateTime.now,
           status:           "Shipped",

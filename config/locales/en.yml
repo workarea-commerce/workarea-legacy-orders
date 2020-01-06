@@ -1,0 +1,16 @@
+en:
+  workarea:
+    admin:
+      legacy_orders:
+        index:
+          title: Legacy Orders
+        show:
+          billing_address: Billing Address
+          customer_number: 'Customer Number:'
+          email: 'Email:'
+          shipping_address: Shipping Address
+          tenders: Tenders
+          ending_with: ending with %{number}
+      shared:
+        primary_nav:
+          legacy_orders: Legacy Orders
