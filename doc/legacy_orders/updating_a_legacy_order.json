@@ -1,0 +1,40 @@
+{
+  "resource": "Legacy Orders",
+  "http_method": "PATCH",
+  "route": "api/legacy_orders/:id",
+  "description": "Updating a legacy order",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PATCH",
+      "request_path": "api/legacy_orders/570eb04a657269e1ee000033",
+      "request_body": "{\"order\":{\"email\":\"szelley@workarea.com\"}}",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 204,
+      "response_status_text": "No Content",
+      "response_body": null,
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "X-Flash-Messages": "{}",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "a6b54076-ad77-497c-aea4-03098be47cfe",
+        "X-Runtime": "0.033888"
+      },
+      "response_content_type": null,
+      "curl": "curl \"https://user%40example.com:p@ssw0rd@www.example.comapi/legacy_orders/570eb04a657269e1ee000033\" -d '{\"order\":{\"email\":\"szelley@workarea.com\"}}' -X PATCH \\\n\t-H \"Content-Type: application/json\""
+    }
+  ]
+}

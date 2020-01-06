@@ -1,0 +1,44 @@
+{
+  "resource": "Legacy Orders",
+  "http_method": "POST",
+  "route": "/api/legacy_orders",
+  "description": "Creating a legacy order",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/legacy_orders",
+      "request_body": "{\"order\":{\"alternate_number\":\"O5678\",\"billing_address\":{\"city\":\"Philadelphia\",\"company\":null,\"country\":\"US\",\"name\":\"Eric Pigeon\",\"phone_extension\":null,\"phone_number\":null,\"postal_code\":\"19106\",\"region\":\"PA\",\"street\":\"12 N. 3rd St\",\"street_2\":null},\"customer_number\":\"1234\",\"email\":\"epigeon@workarea.com\",\"items\":[{\"customizations\":null,\"details\":{\"size\":\"Medium\",\"color\":\"Charcoal\"},\"name\":\"City Pigeon - Medium\",\"price\":{\"cents\":3200.0,\"currency_iso\":\"USD\"},\"quantity\":2,\"sku\":\"1410411-025\"},{\"customizations\":{\"line_1\":\"Eric\",\"line_2\":\"Rodriguez\",\"font_style\":\"Block\"},\"details\":{\"material\":\"Brass\"},\"name\":\"Brass Name Plate\",\"price\":{\"cents\":1299.0,\"currency_iso\":\"USD\"},\"quantity\":1,\"sku\":\"22370\"}],\"number\":\"W1234\",\"placed_at\":\"2016-04-13T16:47:05.433-04:00\",\"shipping_address\":{\"city\":\"Philadelphia\",\"company\":null,\"country\":\"US\",\"name\":\"Eric Pigeon\",\"phone_extension\":null,\"phone_number\":\"215.925.1800\",\"postal_code\":\"19106\",\"region\":\"PA\",\"street\":\"12 N. 3rd St\",\"street_2\":null},\"shipping_method\":\"USPS\",\"shipping_total\":{\"cents\":599.0,\"currency_iso\":\"USD\"},\"status\":\"Shipped\",\"tax_total\":{\"cents\":271.0,\"currency_iso\":\"USD\"},\"tenders\":[{\"amount\":{\"cents\":2500.0,\"currency_iso\":\"USD\"},\"expiration_month\":null,\"expiration_year\":null,\"number\":\"XXXX1234\",\"type\":\"Gift Card\"},{\"amount\":{\"cents\":2869.0,\"currency_iso\":\"USD\"},\"expiration_month\":\"12\",\"expiration_year\":\"2017\",\"number\":\"XXXXXXXXXXXX1111\",\"type\":\"VISA\"}],\"total_price\":{\"cents\":5369.0,\"currency_iso\":\"USD\"}}}",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\n  \"order\": {\n    \"_id\": \"570eb049657269e1ee00001d\",\n    \"alternate_number\": \"O5678\",\n    \"billing_address\": {\n      \"_id\": \"570eb049657269e1ee000020\",\n      \"city\": \"Philadelphia\",\n      \"company\": null,\n      \"country\": \"US\",\n      \"name\": \"Eric Pigeon\",\n      \"phone_extension\": null,\n      \"phone_number\": null,\n      \"postal_code\": \"19106\",\n      \"region\": \"PA\",\n      \"street\": \"12 N. 3rd St\",\n      \"street_2\": null\n    },\n    \"customer_number\": \"1234\",\n    \"email\": \"epigeon@workarea.com\",\n    \"items\": [\n      {\n        \"_id\": \"570eb049657269e1ee00001e\",\n        \"customizations\": null,\n        \"details\": {\n          \"size\": \"Medium\",\n          \"color\": \"Charcoal\"\n        },\n        \"name\": \"City Pigeon - Medium\",\n        \"price\": {\n          \"cents\": 3200.0,\n          \"currency_iso\": \"USD\"\n        },\n        \"quantity\": 2,\n        \"sku\": \"1410411-025\"\n      },\n      {\n        \"_id\": \"570eb049657269e1ee00001f\",\n        \"customizations\": {\n          \"line_1\": \"Eric\",\n          \"line_2\": \"Rodriguez\",\n          \"font_style\": \"Block\"\n        },\n        \"details\": {\n          \"material\": \"Brass\"\n        },\n        \"name\": \"Brass Name Plate\",\n        \"price\": {\n          \"cents\": 1299.0,\n          \"currency_iso\": \"USD\"\n        },\n        \"quantity\": 1,\n        \"sku\": \"22370\"\n      }\n    ],\n    \"number\": \"W1234\",\n    \"placed_at\": \"2016-04-13T16:47:05.433-04:00\",\n    \"shipping_address\": {\n      \"_id\": \"570eb049657269e1ee000021\",\n      \"city\": \"Philadelphia\",\n      \"company\": null,\n      \"country\": \"US\",\n      \"name\": \"Eric Pigeon\",\n      \"phone_extension\": null,\n      \"phone_number\": \"215.925.1800\",\n      \"postal_code\": \"19106\",\n      \"region\": \"PA\",\n      \"street\": \"12 N. 3rd St\",\n      \"street_2\": null\n    },\n    \"shipping_method\": \"USPS\",\n    \"shipping_total\": {\n      \"cents\": 599.0,\n      \"currency_iso\": \"USD\"\n    },\n    \"status\": \"Shipped\",\n    \"tax_total\": {\n      \"cents\": 271.0,\n      \"currency_iso\": \"USD\"\n    },\n    \"tenders\": [\n      {\n        \"_id\": \"570eb049657269e1ee000022\",\n        \"amount\": {\n          \"cents\": 2500.0,\n          \"currency_iso\": \"USD\"\n        },\n        \"expiration_month\": null,\n        \"expiration_year\": null,\n        \"number\": \"XXXX1234\",\n        \"type\": \"Gift Card\"\n      },\n      {\n        \"_id\": \"570eb049657269e1ee000023\",\n        \"amount\": {\n          \"cents\": 2869.0,\n          \"currency_iso\": \"USD\"\n        },\n        \"expiration_month\": \"12\",\n        \"expiration_year\": \"2017\",\n        \"number\": \"XXXXXXXXXXXX1111\",\n        \"type\": \"VISA\"\n      }\n    ],\n    \"total_price\": {\n      \"cents\": 5369.0,\n      \"currency_iso\": \"USD\"\n    }\n  }\n}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Location": "/api/legacy_orders/570eb049657269e1ee00001d",
+        "X-Flash-Messages": "{}",
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"183bd388367b95c248f53cee6f7129ab\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "8d347332-9f0f-4305-b77f-bce2dac815ea",
+        "X-Runtime": "0.042056",
+        "Content-Length": "1705"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://user%40example.com:p@ssw0rd@www.example.com/api/legacy_orders\" -d '{\"order\":{\"alternate_number\":\"O5678\",\"billing_address\":{\"city\":\"Philadelphia\",\"company\":null,\"country\":\"US\",\"name\":\"Eric Pigeon\",\"phone_extension\":null,\"phone_number\":null,\"postal_code\":\"19106\",\"region\":\"PA\",\"street\":\"12 N. 3rd St\",\"street_2\":null},\"customer_number\":\"1234\",\"email\":\"epigeon@workarea.com\",\"items\":[{\"customizations\":null,\"details\":{\"size\":\"Medium\",\"color\":\"Charcoal\"},\"name\":\"City Pigeon - Medium\",\"price\":{\"cents\":3200.0,\"currency_iso\":\"USD\"},\"quantity\":2,\"sku\":\"1410411-025\"},{\"customizations\":{\"line_1\":\"Eric\",\"line_2\":\"Rodriguez\",\"font_style\":\"Block\"},\"details\":{\"material\":\"Brass\"},\"name\":\"Brass Name Plate\",\"price\":{\"cents\":1299.0,\"currency_iso\":\"USD\"},\"quantity\":1,\"sku\":\"22370\"}],\"number\":\"W1234\",\"placed_at\":\"2016-04-13T16:47:05.433-04:00\",\"shipping_address\":{\"city\":\"Philadelphia\",\"company\":null,\"country\":\"US\",\"name\":\"Eric Pigeon\",\"phone_extension\":null,\"phone_number\":\"215.925.1800\",\"postal_code\":\"19106\",\"region\":\"PA\",\"street\":\"12 N. 3rd St\",\"street_2\":null},\"shipping_method\":\"USPS\",\"shipping_total\":{\"cents\":599.0,\"currency_iso\":\"USD\"},\"status\":\"Shipped\",\"tax_total\":{\"cents\":271.0,\"currency_iso\":\"USD\"},\"tenders\":[{\"amount\":{\"cents\":2500.0,\"currency_iso\":\"USD\"},\"expiration_month\":null,\"expiration_year\":null,\"number\":\"XXXX1234\",\"type\":\"Gift Card\"},{\"amount\":{\"cents\":2869.0,\"currency_iso\":\"USD\"},\"expiration_month\":\"12\",\"expiration_year\":\"2017\",\"number\":\"XXXXXXXXXXXX1111\",\"type\":\"VISA\"}],\"total_price\":{\"cents\":5369.0,\"currency_iso\":\"USD\"}}}' -X POST \\\n\t-H \"Content-Type: application/json\""
+    }
+  ]
+}

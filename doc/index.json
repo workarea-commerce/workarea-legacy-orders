@@ -1,0 +1,37 @@
+{
+  "resources": [
+    {
+      "name": "Legacy Orders",
+      "examples": [
+        {
+          "description": "Listing legacy orders",
+          "link": "legacy_orders/listing_legacy_orders.json",
+          "groups": "all",
+          "route": "/api/legacy_orders",
+          "method": "get"
+        },
+        {
+          "description": "Creating a legacy order",
+          "link": "legacy_orders/creating_a_legacy_order.json",
+          "groups": "all",
+          "route": "/api/legacy_orders",
+          "method": "post"
+        },
+        {
+          "description": "Showing a legacy order",
+          "link": "legacy_orders/showing_a_legacy_order.json",
+          "groups": "all",
+          "route": "api/legacy_orders/:id",
+          "method": "get"
+        },
+        {
+          "description": "Updating a legacy order",
+          "link": "legacy_orders/updating_a_legacy_order.json",
+          "groups": "all",
+          "route": "api/legacy_orders/:id",
+          "method": "patch"
+        }
+      ]
+    }
+  ]
+}

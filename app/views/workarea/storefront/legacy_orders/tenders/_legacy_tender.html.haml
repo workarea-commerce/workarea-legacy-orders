@@ -1,0 +1,8 @@
+%p= tender.type
+- if tender.number.present?
+  %p= tender.number
+- if tender.expiration_year.present? && tender.expiration_month.present?
+  %p
+    = t('workarea.storefront.credit_cards.expires')
+    = t('workarea.storefront.credit_cards.expiry', month: tender.expiration_month, year: tender.expiration_year)
+%p= number_to_currency(tender.amount)

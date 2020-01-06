@@ -1,0 +1,59 @@
+module Workarea
+  decorate Storefront::Users::OrdersController, with: 'legacy_orders' do
+    def index
+      @orders = (orders + legacy_orders)
+    end
+
+    def show
+      model = LegacyOrder.where(id: params[:id]).first
+
+      if model.blank?
+        super
+        return
+      end
+
+      if model.email.downcase != current_user.email.downcase
+        render nothing: true, status: :forbidden and return
+      else
+        @order = Storefront::LegacyOrderViewModel.wrap(model)
+        render "workarea/storefront/users/legacy_orders/show"
+      end
+    end
+
+    private
+
+    def orders
+      @regular_orders ||=
+        begin
+          models = Order.recent(
+            current_user.id,
+            Workarea.config.storefront_user_order_display_count
+          )
+          statuses = Fulfillment.find_statuses(*models.map(&:id))
+
+          models.map do |order|
+            Storefront::OrderViewModel.new(
+              order,
+              fulfillment_status: statuses[order.id]
+            )
+          end
+        end
+    end
+
+    def legacy_order_limit
+      Workarea.config.storefront_user_order_display_count - orders.size
+    end
+
+    def legacy_order_models
+      return [] unless legacy_order_limit > 0
+
+      LegacyOrder
+        .for_email(current_user.email)
+        .limit(legacy_order_limit)
+    end
+
+    def legacy_orders
+      Storefront::LegacyOrderViewModel.wrap(legacy_order_models)
+    end
+  end
+end
