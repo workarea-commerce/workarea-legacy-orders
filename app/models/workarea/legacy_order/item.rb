@@ -5,10 +5,13 @@ module Workarea
 
       field :name, type: String
       field :sku, type: String
+      field :product_id, type: String
       field :quantity, type: Integer
       field :price, type: Money
       field :details, type: Hash, default: {}
       field :customizations, type: Hash, default: {}
+      field :token, type: String
+      field :status, type: String
 
       embedded_in :order, class_name: "Workarea::LegacyOrder"
 

@@ -1,0 +1,108 @@
+- @page_title = @order.name
+
+.view
+  .view__header
+    .grid.grid--center
+      .grid__cell.grid__cell--50
+        .view__heading
+          = link_to_index_for(@order)
+          %h1= @order.name
+
+
+.view__container.view__container--narrow
+  .section
+    .grid
+      .grid__cell.grid__cell--25
+        %h2= t('workarea.admin.orders.attributes.checkout.title')
+
+        .section
+          %ul.list-reset
+            %li
+              %strong= t('workarea.admin.legacy_orders.show.email')
+              = @order.email
+            - if @order.customer_number.present?
+              %li
+                %strong= t('workarea.admin.legacy_orders.show.customer_number')
+                = @order.customer_number
+            %li
+              %strong= t('workarea.admin.orders.attributes.checkout.status')
+              = @order.status.to_s.titleize
+            %li
+              %strong= t('workarea.admin.orders.attributes.checkout.placed')
+              - if @order.placed?
+                = local_time_ago(@order.placed_at)
+            %li
+              %strong= t('workarea.admin.fields.updated_at')
+              #{local_time_ago(@order.updated_at)}
+            %li
+              %strong= t('workarea.admin.fields.created_at')
+              #{local_time_ago(@order.created_at)}
+            = append_partials('admin.legacy_order_attributes', order: @order)
+
+        .section
+          %h3= t('workarea.admin.legacy_orders.show.shipping_address')
+          %p= formatted_address(@order.shipping_address)
+
+        .section
+          %h3= t('workarea.admin.legacy_orders.show.billing_address')
+          %p= formatted_address(@order.billing_address)
+
+        .section
+          %h3= t('workarea.admin.legacy_orders.show.tenders')
+          %ul.list-reset
+            - @order.tenders.each do |tender|
+              = render "workarea/admin/legacy_orders/tenders/#{tender.slug}", tender: tender
+
+      .grid__cell.grid__cell--75
+        %h2= t('workarea.admin.orders.attributes.items.title')
+        %table
+          %thead
+            %tr
+              %th= t('workarea.admin.orders.attributes.items.product')
+              %th.align-center= t('workarea.admin.orders.attributes.items.quantity')
+              %th.align-right= t('workarea.admin.orders.attributes.items.pricing')
+          %tbody
+            - @order.items.each do |item|
+              %tr
+                %td
+                  .grid.grid--auto
+                    .grid__cell
+                      - if item.product.present?
+                        = link_to image_tag(product_image_url(item.image, :small), alt: item.product.name), catalog_product_url(item.product, sku: item.sku)
+                      - else
+                        = image_tag(product_image_url(item.image, :small), alt: item.product_name)
+                    .grid__cell
+                      %p
+                        - if item.product.present?
+                          = link_to item.product_name, catalog_product_path(item.product, sku: item.sku)
+                        - else
+                          = item.product_name
+                      %p= item.sku
+                      - if item.customizations.any?
+                        - item.customizations.each do |name, value|
+                          %p #{name.titleize}: #{value}
+                      = append_partials('admin.legacy_order_attributes_item_details', item: item)
+                %td.align-center= item.quantity
+                %td.align-right= number_to_currency item.price
+
+        .grid.grid--right
+          .grid__cell.grid__cell--50
+            %table.data-pairs
+              %tbody
+                %tr
+                  %th
+                    %span.data-pairs__name= t('workarea.admin.orders.attributes.totals.subtotal')
+                  %td= number_to_currency @order.subtotal_price
+                %tr
+                  %th
+                    %span.data-pairs__name= t('workarea.admin.orders.attributes.totals.shipping')
+                  %td= number_to_currency @order.shipping_total
+                %tr
+                  %th
+                    %span.data-pairs__name= t('workarea.admin.orders.attributes.totals.tax')
+                  %td= number_to_currency @order.tax_total
+                %tr
+                  %th
+                    %span.data-pairs__name= t('workarea.admin.orders.attributes.totals.total_price')
+                  %td
+                    %strong= number_to_currency @order.total_price

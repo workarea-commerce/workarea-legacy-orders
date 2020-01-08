@@ -1,0 +1,7 @@
+%li
+  - if tender.issuer.present?
+    = credit_card_issuer_icon(card_icon_name(tender.issuer))
+  - else
+    = tender.type.titleize
+  = t('workarea.admin.legacy_orders.show.ending_with', number: tender.number.slice(-4..-1))
+  %strong= number_to_currency tender.amount

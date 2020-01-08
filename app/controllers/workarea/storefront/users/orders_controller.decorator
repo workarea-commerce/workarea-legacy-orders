@@ -1,11 +1,12 @@
 module Workarea
   decorate Storefront::Users::OrdersController, with: 'legacy_orders' do
     def index
-      @orders = (orders + legacy_orders)
+      super
+      @orders += legacy_orders
     end
 
     def show
-      model = LegacyOrder.where(id: params[:id]).first
+      model = LegacyOrder.find(params[:id]) rescue nil
 
       if model.blank?
         super
@@ -22,26 +23,8 @@ module Workarea
 
     private
 
-    def orders
-      @regular_orders ||=
-        begin
-          models = Order.recent(
-            current_user.id,
-            Workarea.config.storefront_user_order_display_count
-          )
-          statuses = Fulfillment.find_statuses(*models.map(&:id))
-
-          models.map do |order|
-            Storefront::OrderViewModel.new(
-              order,
-              fulfillment_status: statuses[order.id]
-            )
-          end
-        end
-    end
-
     def legacy_order_limit
-      Workarea.config.storefront_user_order_display_count - orders.size
+      Workarea.config.storefront_user_order_display_count - @orders.size
     end
 
     def legacy_order_models

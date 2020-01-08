@@ -6,6 +6,7 @@ module Workarea
       field :type, type: String
       field :number, type: String
       field :amount, type: Money
+      field :issuer, type: String
       field :expiration_month, type: String
       field :expiration_year, type: String
 
@@ -13,6 +14,10 @@ module Workarea
 
       def slug
         "legacy_tender"
+      end
+
+      def issuer
+        super.presence || type
       end
     end
   end
