@@ -9,6 +9,7 @@ Features
 * Display order history inline with Workarea order history for customers
 * Supports order lookup behavior for guest orders
 * Admin UI support for searching and browsing legacy orders
+* Admin UI support for importing and exporting legacy orders
 * Admin API Support for viewing legacy orders
 
 Getting Started
