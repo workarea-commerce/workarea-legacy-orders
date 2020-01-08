@@ -1,7 +1,15 @@
 WebLinc Legacy Orders
 ================================================================================
 
-Workarea Commerce platform plugin that enables the importing of orders from outside sources and displayed to users in their account information.
+Workarea Commerce platform plugin that enables the importing of orders from outside sources. Useful during the migration process from another system where you wish to preserve order data for customers.
+
+Features
+--------------------------------------------------------------------------------
+
+* Display order history inline with Workarea order history for customers
+* Supports order lookup behavior for guest orders
+* Admin UI support for searching and browsing legacy orders
+* Admin API Support for viewing legacy orders
 
 Getting Started
 --------------------------------------------------------------------------------
