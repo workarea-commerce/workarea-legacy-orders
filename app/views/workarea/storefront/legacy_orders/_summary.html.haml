@@ -12,7 +12,7 @@
           %strong
             #{t('workarea.storefront.orders.status')}:
           = order.fulfillment_status || order.status
-        = append_partials('storefront.order_summary_header', order: order, show_fullfillment: local_assigns[:show_fullfillment])
+        = append_partials('storefront.legacy_order_summary_header', order: order, show_fullfillment: local_assigns[:show_fullfillment])
     .box__body
       .grid
         .grid__cell.grid__cell--25-at-medium
@@ -52,7 +52,7 @@
                     %br
                   - if item.token&.enabled?
                     = link_to t('workarea.storefront.orders.download'), download_path(item.token)
-                  = append_partials('storefront.order_summary_item_details', item: item)
+                  = append_partials('storefront.legacy_order_summary_item_details', item: item)
 
         .grid__cell.grid__cell--25-at-medium
           %h3= t('workarea.storefront.orders.totals')
@@ -80,7 +80,7 @@
                   %span #{t('workarea.storefront.orders.tax')}:
                 %td= number_to_currency(order.tax_total)
 
-              = append_partials('storefront.order_summary_payment', order: order)
+              = append_partials('storefront.legacy_order_summary_payment', order: order)
 
               %tr.table__total
                 %th
@@ -89,7 +89,7 @@
                 %td
                   %strong= number_to_currency(order.total_price)
 
-  = append_partials('storefront.orders_summary_top', order: order)
+  = append_partials('storefront.legacy_orders_summary_top', order: order)
 
   - if order.requires_shipping?
     .box
@@ -127,7 +127,7 @@
                                 %p.product-list__option #{name.titleize}: #{value}
                           - item.customizations.each do |name, value|
                             %p.product-list__customization #{name.titleize}: #{value}
-                          = append_partials('storefront.order_summary_item_details', item: item)
+                          = append_partials('storefront.legacy_order_summary_item_details', item: item)
                     .product-list__item-cell
                       %table.table
                         %thead
@@ -199,7 +199,7 @@
 
                     %p.product-list__quantity #{t('workarea.storefront.orders.quantity')}: #{item.quantity}
 
-  = append_partials('storefront.orders_summary_bottom', order: order)
+  = append_partials('storefront.legacy_orders_summary_bottom', order: order)
 
   - if local_assigns[:recommendations].present?
     .hidden.hidden--for-small-only
