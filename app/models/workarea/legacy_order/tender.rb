@@ -9,6 +9,7 @@ module Workarea
       field :issuer, type: String
       field :expiration_month, type: String
       field :expiration_year, type: String
+      field :data, type: Hash, default: {}
 
       validates_presence_of :type, :amount
 
