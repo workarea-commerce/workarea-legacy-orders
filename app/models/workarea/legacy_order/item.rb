@@ -12,6 +12,7 @@ module Workarea
       field :customizations, type: Hash, default: {}
       field :token, type: String
       field :status, type: String
+      field :data, type: Hash, default: {}
 
       embedded_in :order, class_name: "Workarea::LegacyOrder"
 

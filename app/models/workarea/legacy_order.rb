@@ -13,6 +13,7 @@ module Workarea
     field :tax_total, type: Money
     field :total_price, type: Money
     field :discount_total, type: Money
+    field :data, type: Hash, default: {}
 
     embeds_many :items, class_name: "Workarea::LegacyOrder::Item"
     embeds_one :billing_address, class_name: "Workarea::LegacyOrder::Address"
