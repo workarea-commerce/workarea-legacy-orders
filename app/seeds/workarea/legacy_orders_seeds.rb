@@ -33,7 +33,7 @@ module Workarea
         email: email,
         customer_number: user&.id,
         alternate_number: SecureRandom.hex(5).upcase,
-        placed_at: Faker::Date.between(3.years.ago, Date.today),
+        placed_at: Faker::Date.between(from: 3.years.ago, to: Date.today),
         status: "Shipped",
         shipping_method: "USPS Ground",
         shipping_total: shipping,
@@ -54,7 +54,7 @@ module Workarea
         tenders << {
           type: "Gift Card",
           number: Faker::Business.credit_card_number,
-          amount: Faker::Commerce.price(0..total.to_f).to_m
+          amount: Faker::Commerce.price(range: 0..total.to_f).to_m
         }
       end
 
