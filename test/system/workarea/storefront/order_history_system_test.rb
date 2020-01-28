@@ -18,7 +18,7 @@ module Workarea
 
         click_link t('workarea.storefront.orders.view')
         assert_current_path(storefront.users_order_path('LO12345'))
-        assert(page.has_content?(order.total_price))
+        assert(page.has_content?(order.total_price.to_f))
       end
 
       def test_viewing_legacy_orders_in_list
@@ -46,10 +46,10 @@ module Workarea
         assert(page.has_content?("Line 1: Eric"))
         assert(page.has_content?("Line 2: Rodriguez"))
 
-        assert(page.has_content?("$44.99")) # Subtotal
-        assert(page.has_content?("$5.99")) # Shipping
-        assert(page.has_content?("$2.71")) # Tax
-        assert(page.has_content?("$53.69")) # Total
+        assert(page.has_content?(order.subtotal_price.to_f))
+        assert(page.has_content?(order.shipping_total.to_f))
+        assert(page.has_content?(order.tax_total.to_f))
+        assert(page.has_content?(order.total_price.to_f))
       end
 
       def test_viewing_a_regular_order
