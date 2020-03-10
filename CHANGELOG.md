@@ -1,3 +1,13 @@
+Workarea Legacy Orders 2.0.1 (2020-03-10)
+--------------------------------------------------------------------------------
+
+*   Include Workarea::ApplicationDocument for LegacyOrder embedded models
+
+    LEGACYORDERS-5
+    Matt Duffy
+
+
+
 Workarea Legacy Orders 2.0.0 (2020-02-21)
 --------------------------------------------------------------------------------
 
