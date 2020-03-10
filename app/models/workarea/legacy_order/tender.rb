@@ -1,7 +1,7 @@
 module Workarea
   class LegacyOrder
     class Tender
-      include Mongoid::Document
+      include ApplicationDocument
 
       field :type, type: String
       field :number, type: String

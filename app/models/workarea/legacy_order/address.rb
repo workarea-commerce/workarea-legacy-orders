@@ -1,7 +1,7 @@
 module Workarea
   class LegacyOrder
     class Address
-      include Mongoid::Document
+      include ApplicationDocument
 
       field :first_name, type: String
       field :last_name, type: String

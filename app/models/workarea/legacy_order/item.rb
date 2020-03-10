@@ -1,7 +1,7 @@
 module Workarea
   class LegacyOrder
     class Item
-      include Mongoid::Document
+      include ApplicationDocument
 
       field :name, type: String
       field :sku, type: String
