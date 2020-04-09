@@ -1,3 +1,18 @@
+Workarea Legacy Orders 2.0.2 (2020-04-09)
+--------------------------------------------------------------------------------
+
+*   Rename field for tender type
+
+    This is a breaking change!
+
+    Using a field of name `type` is incompatible with import/export, which
+    was introduced in v2.0 of this plugin. This will be resolved in Workarea
+    v3.6, but for now the best path to fix import/export is to rename
+    this field.
+    Ben Crouse
+
+
+
 Workarea Legacy Orders 2.0.1 (2020-03-10)
 --------------------------------------------------------------------------------
 
