@@ -3,7 +3,7 @@ module Workarea
     class Tender
       include ApplicationDocument
 
-      field :type, type: String
+      field :tender_type, type: String
       field :number, type: String
       field :amount, type: Money
       field :issuer, type: String
@@ -12,6 +12,8 @@ module Workarea
       field :data, type: Hash, default: {}
 
       validates_presence_of :type, :amount
+      alias_method :type, :tender_type
+      alias_method :type=, :tender_type=
 
       def slug
         "legacy_tender"
