@@ -1,3 +1,13 @@
+Workarea Legacy Orders 2.0.3 (2020-10-29)
+--------------------------------------------------------------------------------
+
+*   Revert seeds changes to maintain workarea < 3.6 compatibility
+
+
+    Matt Duffy
+
+
+
 Workarea Legacy Orders 2.0.2 (2020-04-09)
 --------------------------------------------------------------------------------
 
